@@ -936,7 +936,7 @@ static void LoggerWriteMoreData(Logger *logger)
 		}
 		
 		pthread_mutex_lock(&logger->logQueueMutex);
-		int remainingMsgs = CFArrayGetCount(logger->logQueue);
+        long remainingMsgs = CFArrayGetCount(logger->logQueue);
 		pthread_mutex_unlock(&logger->logQueueMutex);
 		if (remainingMsgs == 0)
 			pthread_cond_broadcast(&logger->logQueueEmpty);
